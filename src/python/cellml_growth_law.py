@@ -91,9 +91,8 @@ InterpolationType = 1
 iron.DiagnosticsSetOn(iron.DiagnosticTypes.FROM,[1,2,3,4,5],"Diagnostics",["FiniteElasticity_FiniteElementResidualEvaluate"])
 
 # Get the number of computational nodes and this computational node number
-computationEnvironment = iron.ComputationEnvironment()
-numberOfComputationalNodes = computationEnvironment.NumberOfWorldNodesGet()
-computationalNodeNumber = computationEnvironment.WorldNodeNumberGet()
+numberOfComputationalNodes = iron.ComputationalNumberOfNodesGet()
+computationalNodeNumber = iron.ComputationalNodeNumberGet()
 
 # Create a 3D rectangular cartesian coordinate system
 coordinateSystem = iron.CoordinateSystem()
