@@ -88,7 +88,7 @@ problemUserNumber = 1
 
 InterpolationType = 1
 
-iron.DiagnosticsSetOn(iron.DiagnosticTypes.FROM,[1,2,3,4,5],"Diagnostics",["FiniteElasticity_FiniteElementResidualEvaluate"])
+#iron.DiagnosticsSetOn(iron.DiagnosticTypes.FROM,[1,2,3,4,5],"Diagnostics",["FiniteElasticity_FiniteElementResidualEvaluate"])
 
 # Get the number of computational nodes and this computational node number
 numberOfComputationalNodes = iron.ComputationalNumberOfNodesGet()
