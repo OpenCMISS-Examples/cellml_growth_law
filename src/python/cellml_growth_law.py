@@ -48,6 +48,8 @@ import sys, os
 # Intialise OpenCMISS
 from opencmiss.iron import iron
 
+path=os.path.dirname(os.path.abspath(__file__))
+
 # Set problem parameters
 height = 1.0
 width = 1.0
@@ -88,7 +90,7 @@ problemUserNumber = 1
 
 InterpolationType = 1
 
-iron.DiagnosticsSetOn(iron.DiagnosticTypes.FROM,[1,2,3,4,5],"Diagnostics",["FiniteElasticity_FiniteElementResidualEvaluate"])
+#iron.DiagnosticsSetOn(iron.DiagnosticTypes.FROM,[1,2,3,4,5],"Diagnostics",["FiniteElasticity_FiniteElementResidualEvaluate"])
 
 # Get the number of computational nodes and this computational node number
 numberOfComputationalNodes = iron.ComputationalNumberOfNodesGet()
@@ -275,7 +277,7 @@ equationsSet.DependentCreateFinish()
 # Create the CellML environment for the growth law
 growthCellML = iron.CellML()
 growthCellML.CreateStart(growthCellMLUserNumber,region)
-growthCellMLIdx = growthCellML.ModelImport("simplegrowth.cellml")
+growthCellMLIdx = growthCellML.ModelImport(os.path.join(path,"simplegrowth.cellml"))
 growthCellML.VariableSetAsKnown(growthCellMLIdx,"Main/fibrerate")
 growthCellML.VariableSetAsKnown(growthCellMLIdx,"Main/sheetrate")
 growthCellML.VariableSetAsKnown(growthCellMLIdx,"Main/normalrate")
@@ -316,7 +318,7 @@ growthCellML.StateFieldCreateFinish()
 # Create the CellML environment for the consitutative law
 constituativeCellML = iron.CellML()
 constituativeCellML.CreateStart(constituativeCellMLUserNumber,region)
-constituativeCellMLIdx = constituativeCellML.ModelImport("mooneyrivlin.cellml")
+constituativeCellMLIdx = constituativeCellML.ModelImport(os.path.join(path,"mooneyrivlin.cellml"))
 constituativeCellML.VariableSetAsKnown(constituativeCellMLIdx,"equations/E11")
 constituativeCellML.VariableSetAsKnown(constituativeCellMLIdx,"equations/E12")
 constituativeCellML.VariableSetAsKnown(constituativeCellMLIdx,"equations/E13")
